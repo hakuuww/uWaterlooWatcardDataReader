@@ -1,6 +1,8 @@
 # uWaterlooWatcardDataReader
 The purpose of this project is to read transaction and balance data from a UWaterloo Watcard account and inputting the read data into an excel file
+
 The project is coded in python and used Selenium&Openpyxl framework
+
 columnar and click libraries were also used to format data in run window
 
 
@@ -34,7 +36,9 @@ The following must be completed before running the main.py file:
     C:/SeleniumDrivers/chromedriver.exe
     
 With the setup now completed, you now need to enter your uWaterloo student number (can be found on your Watcard) and your uWaterloo password
+
 Open the main.py file and modify the value of student_number and password variables 
+
 Replace the xxx with your own student number and password
 
     student_number = 'xxx'
@@ -44,9 +48,12 @@ Replace the xxx with your own student number and password
    
    
 After running the program, an Excel file will be generated inside the same folder with the name: "WatcardTransactions.xlsx"
+
    You can open the Excel file and format the data by 
-      selecting all cells with Ctrl+A
-      pressing Alt+H then O then I
+    
+   selecting all cells with Ctrl+A
+    
+   pressing Alt+H then O then I
        
         Ctrl+A
         Alt+H then O then I
