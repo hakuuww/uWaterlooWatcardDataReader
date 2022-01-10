@@ -9,34 +9,27 @@ from click import style
 from openpyxl import Workbook, load_workbook
 from openpyxl.utils import get_column_letter
 
+#################################################
+#Enter you uWaterloo student number and password here (replacing the xxx)
+student_number = 'xxx'
+password = 'xxx'
+#################################################
+
+
 driver = webdriver.Chrome(executable_path='C:/SeleniumDrivers/chromedriver.exe')
 
 driver.get("https://watcard.uwaterloo.ca/OneWeb/Account/LogOn") #open the link in the browser
 
-#An implicit wait tells WebDriver to poll the DOM for a certain amount of time
-# when trying to find any element (or elements)
-# not immediately available.
-# The default setting is 0 (zero).
-# Once set, the implicit wait is set for the life of the WebDriver object. ????
-#to poll the DOM for a certain amount of time means means to check the DOM repeatedly, on a set interval (every X milliseconds), to see if an element exists.
-
-#Explicit wait means to wait until the element appears
 driver.implicitly_wait(30)
-#try:
-#    driver.implicitly_wait(30)
-#    accept_cookies_button = driver.find_element_(By.CLASS_NAME, 'flex--item s-btn s-btn__primary js-accept-cookies js-consent-banner-hide')
-#    accept_cookies_button.click()
-#except:
-#    print("cookies message was not displayed, therefore skipped")
 
 ########################################Enter passwords and click log on on the Watcard login page######################
 account_element = driver.find_element(By.ID, "Account")
 password_element = driver.find_element(By.ID, "Password")
 submit_element = driver.find_element(By.CLASS_NAME, "btn")
 account_element.click()
-account_element.send_keys("20935781")
+account_element.send_keys(student_number)
 password_element.click()
-password_element.send_keys("Yushan100!")
+password_element.send_keys(password)
 submit_element.click()
 ########################################################################################################################
 
@@ -86,7 +79,6 @@ balance_patterns = [
     ]
 
 balance_table = columnar(balance_final_data, headers=balance_header_list, patterns=balance_patterns, wrap_max=0,max_column_width=30,terminal_width=200)
-print(balance_table)
 ######################################################################################
 
 
@@ -156,6 +148,7 @@ patterns = [
 ]
 
 table = columnar(final_data, headers=header_list, patterns=patterns, wrap_max=0,max_column_width=30,terminal_width=200)
+print(balance_table)
 print(table)
 
 
@@ -178,24 +171,20 @@ ws_balances.append(balance_header_list)
 for balance_type in balance_final_data:
     ws_balances.append(balance_type)
 
-wb_transactions.save('Transactions.xlsx')
+wb_transactions.save('WatcardTransactions.xlsx')
 
 ###########################################################################################
 
 ####################################END PROGRAM#########################################################################
 
-#driver.implicitly_wait(30)
-#past_60_days_element = driver.find_element(By.LINK_TEXT, "Past 30 days")
-#past_60_days_element.click()
 
+#An implicit wait tells WebDriver to poll the DOM for a certain amount of time
+# when trying to find any element (or elements)
+# not immediately available.
+# The default setting is 0 (zero).
+# Once set, the implicit wait is set for the life of the WebDriver object. ????
+#to poll the DOM for a certain amount of time means means to check the DOM repeatedly, on a set interval (every X milliseconds), to see if an element exists.
 
-
-
-#WebDriverWait(driver, 30).until(
-#    EC.text_to_be_present_in_element(
-#        (By.CLASS_NAME, 'name of the class'),#Element filtration, tuple
-#        'Complete!' #The expected text
-#    )
-#)
+#Explicit wait means to wait until the element appears
 
 #driver.back()  can go back to the last page
