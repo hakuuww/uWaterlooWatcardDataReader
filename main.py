@@ -33,7 +33,7 @@ submit_element = driver.find_element(By.CLASS_NAME, "btn")
 account_element.click()
 account_element.send_keys(student_number)
 password_element.click()
-password_element.send_keys(password)
+password_element.send_keys(password) 
 submit_element.click()
 ########################################################################################################################
 
