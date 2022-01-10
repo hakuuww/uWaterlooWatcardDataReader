@@ -11,10 +11,14 @@ from openpyxl.utils import get_column_letter
 
 #################################################
 #Enter you uWaterloo student number and password here (replacing the xxx)
-student_number = 'xxx'
-password = 'xxx'
+#Enter your desired starting and end date for transaction data in the format 'mm/dd/year'
+#The default start date is '01/01/2022', you can leave the trans_end_date empty if you want,
+#it will just end at the current date
+student_number = '20935781'
+password = 'Yushan100!'
+trans_start_date = '01/01/2021'
+trans_end_date = ''
 #################################################
-
 
 driver = webdriver.Chrome(executable_path='C:/SeleniumDrivers/chromedriver.exe')
 
@@ -96,8 +100,17 @@ trans_end_date_value_string = trans_end_date_element.get_attribute('value')
 
 trans_start_date_element.click()
 trans_start_date_element.clear()
-trans_start_date = "12/01/2021"
 trans_start_date_element.send_keys(trans_start_date)
+
+
+
+if trans_end_date != '' :
+    trans_end_date_element.click()
+    trans_end_date_element.clear()
+    trans_end_date_element.send_keys(trans_end_date)
+    trans_end_date_value_string = trans_end_date_element
+
+
 
 trans_search_element = driver.find_element(By.ID, "trans_search")
 trans_search_element.click()
@@ -109,6 +122,7 @@ columns = len(driver.find_elements(By.XPATH, "/html/body/div[1]/div[2]/section/d
 print(f"Watcard Transactions starting from: {trans_start_date} to {trans_end_date_value_string}")
 print(f"{rows-1} transactions in total")
 print(f"({rows} rows and {columns} columns in the table)")
+print('Loading transaction data table')
 #/html/body/div[1]/div[2]/section/div[2]/div/div/div[2]/table/tbody
 #/html/body/div[1]/div[2]/section/div[2]/div/div/div[2]/table/tbody/tr[1]/td[1]
 #xpath of headers:          /html/body/div[1]/div[2]/section/div[2]/div/div/div[2]/table/thead/tr/th[1]
