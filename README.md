@@ -4,7 +4,7 @@ The project is coded in python and used Selenium&Openpyxl framework
 columnar and click libraries were also used to format data in run window
 
 
-the following must be completed before running the main.py file:
+The following must be completed before running the main.py file:
   1. Have Python installed and setted up
 
   2. In command line install the following by typing(one by one):
@@ -32,8 +32,16 @@ the following must be completed before running the main.py file:
    The chromedriver.exe file should now be at the location " C:/SeleniumDrivers/chromedriver.exe "
    
     C:/SeleniumDrivers/chromedriver.exe
-       
+    
+With the setup now completed, you now need to enter your uWaterloo student number (can be found on your Watcard) and your uWaterloo password
+Open the main.py file and modify the value of student_number and password variables 
+Replace the xxx with your own student number and password
+
+    student_number = 'xxx'
+    password = 'xxx'
+
    You are now all set for running the main.py program
+   
    
 After running the program, an Excel file will be generated inside the same folder with the name: "WatcardTransactions.xlsx"
    You can open the Excel file and format the data by 
